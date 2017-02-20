@@ -1,0 +1,29 @@
+tally_bidder_name,tally_transc_id,bidder_name,bidder_id,tally_amt,tally_rate
+
+SELECT tally_bidder_name,tally_transc_id,bidder_name,bidder_id,tally_amt,tally_rate FROM tallyworld.tally_transaction_details,tallyworld.tally_bidders WHERE tally_transc_id=4 AND bidder_id=tally_bidder_name
+
+$sql = "UPDATE tally_transaction_details SET tally_rate=0.7 AND tally_amt=1200 WHERE tally_transc_id=3";
+
+=====================================
+
+UPDATE `tallyworld`.`tally_transaction_details` SET `tally_match_result` = '0', `tally_transc_flag` = '0' WHERE `tally_match_details_id_fk` = 9;
+
+UPDATE  `tallyworld`.`tally_match_details` SET  `tally_match_flag` =  '0', `tally_match_winner_team` =  '0' WHERE  `tally_match_details`.`match_details_id` =9;
+
+UPDATE `tallyworld`.`tally_transaction_details` SET `tally_match_result` = '0', `tally_transc_flag` = '0' WHERE `tally_match_details_id_fk` = 10;
+
+UPDATE  `tallyworld`.`tally_match_details` SET  `tally_match_flag` =  '0', `tally_match_winner_team` =  '0' WHERE  `tally_match_details`.`match_details_id` =10;
+
+=========================================
+
+tally_match_winner_team
+tally_match_flag
+tally_match_details_id_fk
+
+SELECT * FROM `tally_transaction_details` , `tally_match_details` WHERE tally_match_details_id_fk=match_details_id;
+
+UPDATE tally_match_details SET tally_match_flag=1, tally_match_winner_team='' WHERE match_details_id='';
+
+UPDATE tally_transaction_details SET tally_transc_flag=1, tally_match_result='W' WHERE tally_match_details_id_fk='' AND tally_team_name=''
+
+======================

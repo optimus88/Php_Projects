@@ -1,0 +1,48 @@
+env_name
+dp_team
+deployment_date
+
+match_details_player_addition.php
+
+match_details_addition.php
+
+matchdate
+matchVenue
+matchType
+teamName_2
+teamName_1
+
+<?php
+include('blogic.php');
+$matchDetailsObject = new blogic();
+$matchDetailsSelectQuery = "SELECT * FROM login_replicate WHERE username='$userName' AND password='$pass'";
+
+$result = $object-> fetch_report($query);
+if($result == 'false')
+{
+    echo '<script>alert("Sorry..!!! No Records Fetched.."); window.location = "sudo_welcome.php"</script>';
+}
+else
+{
+    while($row = mysql_fetch_array($result))
+    {
+        $filename = $row['file_name'];
+        $order_no = $row['order_no'];
+        $env = $row['env'];
+        $version = $row['version'];
+        $root = $row['root'];
+        $branch = $row['branch'];
+        $module = $row['module'];
+        $domain = $row['domain_name'];
+        $Deplyment_owner = $row['deployment_owner'];
+        $Deplyment_date = $row['deployment_date'];
+        $Deployer_details = $row['requirement_details'];
+?>
+<tr><td><?php echo $filename; ?> </td><td><?php echo $env; ?></td><td><?php echo $order_no; ?></td><td><?php echo $version; ?></td><td><?php echo $root; ?></td>
+<td><?php echo $branch; ?></td><td><?php echo $module; ?></td>
+<td><?php echo $domain; ?></td><td><?php echo $Deplyment_owner; ?></td><td><?php echo $Deplyment_date; ?></td><td><?php echo $Deployer_details; ?></td></tr>
+<?php
+}
+}
+}
+?>

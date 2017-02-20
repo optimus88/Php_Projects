@@ -1,0 +1,107 @@
+env_name
+dp_team
+deployment_date
+
+match_details_player_addition.php
+
+match_details_addition.php
+
+matchdate
+matchVenue
+matchType
+teamName_2
+teamName_1
+
+<?php
+include('blogic.php');
+$matchDetailsObject = new blogic();
+$matchDetailsSelectQuery = "SELECT * FROM login_replicate WHERE username='$userName' AND password='$pass'";
+
+$result = $object-> fetch_report($query);
+if($result == 'false')
+{
+    echo '<script>alert("Sorry..!!! No Records Fetched.."); window.location = "sudo_welcome.php"</script>';
+}
+else
+{
+    while($row = mysql_fetch_array($result))
+    {
+        $filename = $row['file_name'];
+        $order_no = $row['order_no'];
+        $env = $row['env'];
+        $version = $row['version'];
+        $root = $row['root'];
+        $branch = $row['branch'];
+        $module = $row['module'];
+        $domain = $row['domain_name'];
+        $Deplyment_owner = $row['deployment_owner'];
+        $Deplyment_date = $row['deployment_date'];
+        $Deployer_details = $row['requirement_details'];
+?>
+<tr><td><?php echo $filename; ?> </td><td><?php echo $env; ?></td><td><?php echo $order_no; ?></td><td><?php echo $version; ?></td><td><?php echo $root; ?></td>
+<td><?php echo $branch; ?></td><td><?php echo $module; ?></td>
+<td><?php echo $domain; ?></td><td><?php echo $Deplyment_owner; ?></td><td><?php echo $Deplyment_date; ?></td><td><?php echo $Deployer_details; ?></td></tr>
+<?php
+}
+}
+}
+?>
+
+
+CREATE TABLE tally_transaction_details(
+   tally_transc_id int not null auto_increment primary key,
+   tally_transc_details_id int not null,
+   tally_bidder varchar(100) not null,
+   tally_team_name varchar(100) not null,
+   tally_rate double not null,
+   tally_amt double not null,
+   tally_date_of_match date,
+   tally_transc_flag int(2) default=0,
+   FOREIGN KEY fk_tally_transc_id(tally_transc_details_id)
+   REFERENCES tally_match_details(match_details_id)
+   ON UPDATE CASCADE
+   ON DELETE NO ACTION
+  ); 
+  
+  open a child window for the input
+<input type=button onClick=window.open("button-child.php","demo","width=550,height=300,left=150,top=200,toolbar=0,status=0,"); value="Open child Window">
+
+<input type=button onClick="opener.location='http://www.plus2net.com/'" value='Make the Main window change'>
+<input type=button onClick="opener.location='http://www.plus2net.com/html_tutorial/button-linking.php'" value='Bring the button linking tutorial again'>
+<input type=button onClick="location='http://www.plus2net.com/'" value='Make the current window change'>
+<input type=button onClick="self.close();" value="Close this window">
+
+  tally_transaction_details
+  
+  tally_transc_id
+  tally_bidder
+  tally_team_name
+  tally_rate
+  tally_amt
+  tally_date_of_match
+  tally_transc_flag
+  tally_transc_details_id
+  
+ <?php
+//to add detail of the match -should open in a pop-up
+include 'database.php';
+$pdo = Database::connect();
+$sql = 'SELECT TEAM_ID,NAME FROM TEAM_INFO';
+$result1=$pdo->query($sql);
+$result2=$pdo->query($sql);
+Database::disconnect();
+?>
+
+select team_id,team_name from tally_teams;
+
+tally_team1
+ALTER TABLE tally_transaction_details
+ADD FOREIGN KEY (tally_bidder)
+REFERENCES tally_bidders (bidder_id)
+
+ALTER TABLE b17_14312762_tallyworld.tally_transaction_details
+ADD CONSTRAINT FK_tally_transc_bidder FOREIGN KEY (tally_bidder)
+    REFERENCES tally_bidders (bidder_id);
+
+aai.aero
+sbi.co.in

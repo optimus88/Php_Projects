@@ -1,0 +1,20 @@
+1. query to get the list of matches
+SELECT  `Match_Id` ,  `team_id1` , t1.name,  `team_id2` , t2.name,  `is_Day_Match` ,  `venue` ,  `event_date` ,  `has_team1_won` 
+FROM match_detail md
+LEFT JOIN team_info t1 ON t1.team_id = md.team_id1
+LEFT JOIN team_info t2 ON t2.team_id = md.team_id2
+
+2.get list of team in the drop down
+SELECT team_id,name FROM `team_info`
+
+3.insert match detail
+INSERT INTO MATCH_INFO(TEAM_ID1,TEAM_ID2,IS_DAY_MATCH,VENUE,EVENT_DATE,HAS_TEAM1_WON) VALUES (1,1,0,'KOL',CURDATE(),0);
+
+4.insert betting detail
+INSERT INTO BETTING_INFO(`match_id`,`player_id`,`team_id`,`amount_bet`,`rate`) VALUES(2,2,3,'455.89','0.6');
+
+5.GET THE NET AMOUNT FOR EACH USER
+SELECT B.PLAYER_ID, P.PLAYER_NAME, SUM( B.NET_AMOUNT ) 
+FROM BETTING_INFO B
+INNER JOIN PLAYER_INFO P ON P.PLAYER_ID = B.PLAYER_ID
+GROUP BY B.PLAYER_id
